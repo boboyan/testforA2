@@ -20,7 +20,6 @@
          <p></p><input type="submit" value="Log-in"></p>
      </form>
     </div>
-    <p><a href=http://127.0.0.1:8000/signup/>Sign Up</a></p>
-
+    <p><a href="{% url 'crm:signup' %}">Sign Up</a></p>
     {# Assumes you setup the password_reset view in your URLconf #}
 {% endblock content %}
