@@ -120,12 +120,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+STATIC_DIR = os.path.join(BASE_DIR,'static')
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
+if not DEBUG:
+    STATIC_URL = '/static/'
+    #STATICFILES_DIRS = [STATIC_DIR,"/var/www/static"]
+    STATIC_ROOT = os.path.join(BASE_DIR,"static")
+    MEDIA_ROOT = MEDIA_DIR
+    MEDIA_URL = '/media/'
+
+else:
+    MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
+# with products in the database when DEBUG = False
+# pythonanywhere should serve the static files automatically
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
