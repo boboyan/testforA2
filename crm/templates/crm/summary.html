@@ -24,7 +24,7 @@
         <thead>
             <tr class="bg-info">
 
-                <th>Total of Service and Product Charges = ${{ sum_service_charge.service_charge__sum|intcomma|add:sum_product_charge.charge__sum|intcomma }}</th>
+                <th>Total of Service and Product Charges = ${{ sum_service_charge.service_charge__sum|add:sum_product_charge.charge__sum|intcomma }}</th>
 
             </tr>
         </tbody>
